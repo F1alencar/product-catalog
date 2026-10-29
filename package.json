@@ -1,0 +1,11 @@
+{
+  "name": "product-catalog",
+  "version": "1.0.0",
+  "description": "Aplicação fullstack de gerenciamento de catálogo de produtos",
+  "private": true,
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "node scripts/dev.mjs",
+    "stop": "node scripts/stop.mjs"
+  }
+}

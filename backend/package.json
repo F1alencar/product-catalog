@@ -1,0 +1,41 @@
+{
+  "name": "product-catalog-backend",
+  "version": "1.0.0",
+  "description": "API REST para gerenciamento de catálogo de produtos",
+  "main": "dist/server.js",
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "setup:fresh": "docker compose down -v && bash scripts/setup.sh",
+    "dev": "tsx watch src/server.ts",
+    "postinstall": "prisma generate",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.5",
+    "@types/supertest": "^6.0.2",
+    "@types/swagger-ui-express": "^4.1.7",
+    "@vitest/coverage-v8": "^2.1.9",
+    "prisma": "^6.2.1",
+    "supertest": "^7.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}
