@@ -19,8 +19,32 @@ Aplicação fullstack para gerenciamento de catálogo de produtos, com API REST 
 
 ### Pré-requisitos
 
-- **Node.js** 20+
-- **Docker** (para o PostgreSQL)
+- **Node.js** 20+ (verificado automaticamente pelo setup; há um `.nvmrc` na raiz para quem usa nvm/fnm)
+- **Docker** rodando (para o PostgreSQL — também verificado pelo setup)
+
+O `npm run setup` faz uma verificação de pré-requisitos antes de começar e falha com mensagem clara se o Node for antigo ou o Docker não estiver disponível — em vez de quebrar no meio com um erro obscuro.
+
+#### Instalando os pré-requisitos
+
+**Node.js 20+**
+
+| Método | Comando / Link |
+| :----- | :------------- |
+| Download oficial | https://nodejs.org (versão LTS) |
+| nvm (macOS/Linux) | `nvm install` — lê o `.nvmrc` da raiz automaticamente |
+| fnm | `fnm use` — idem |
+| Homebrew (macOS) | `brew install node@20` |
+| Windows | https://nodejs.org ou `winget install OpenJS.NodeJS.LTS` |
+
+**Docker**
+
+| Plataforma | Comando / Link |
+| :--------- | :------------- |
+| macOS / Windows | [Docker Desktop](https://docs.docker.com/get-docker/) |
+| Ubuntu/Debian | `sudo apt install docker.io docker-compose-v2` ou [guia oficial](https://docs.docker.com/engine/install/) |
+| Homebrew (macOS) | `brew install --cask docker` |
+
+Após instalar o Docker, certifique-se de que o daemon está rodando (`docker info` deve responder sem erro).
 
 ### Setup completo (um comando)
 

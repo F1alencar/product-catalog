@@ -4,8 +4,8 @@
   "description": "API REST para gerenciamento de catálogo de produtos",
   "main": "dist/server.js",
   "scripts": {
-    "setup": "bash scripts/setup.sh",
-    "setup:fresh": "docker compose down -v && bash scripts/setup.sh",
+    "setup": "node ../scripts/setup.mjs",
+    "setup:fresh": "docker compose down -v && node ../scripts/setup.mjs",
     "dev": "tsx watch src/server.ts",
     "postinstall": "prisma generate",
     "build": "tsc",
@@ -37,5 +37,8 @@
     "tsx": "^4.19.2",
     "typescript": "^5.7.3",
     "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

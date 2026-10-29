@@ -9,7 +9,34 @@ const frontendDir = resolve(root, 'frontend');
 
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 
+const MIN_NODE_MAJOR = 20;
+
+async function checkPrerequisites() {
+  console.log('🔍 [0/4] Verificando pré-requisitos...');
+
+  const nodeMajor = Number(process.versions.node.split('.')[0]);
+  if (nodeMajor < MIN_NODE_MAJOR) {
+    throw new Error(
+      `Node.js ${MIN_NODE_MAJOR}+ é obrigatório (versão atual: ${process.versions.node}). ` +
+        'Atualize em https://nodejs.org ou use nvm/fnm.',
+    );
+  }
+  console.log(`   Node.js ${process.versions.node} ✓`);
+
+  try {
+    await run('docker', ['info'], { stdio: 'pipe' });
+    console.log('   Docker rodando ✓');
+  } catch {
+    throw new Error(
+      'Docker não está rodando ou não está instalado. ' +
+        'Inicie o Docker Desktop (ou instale em https://docs.docker.com/get-docker/) e tente novamente.',
+    );
+  }
+}
+
 async function main() {
+  await checkPrerequisites();
+
   console.log('📦 [1/4] Instalando dependências do backend...');
   await run(npm, ['install'], { cwd: backendDir });
 
