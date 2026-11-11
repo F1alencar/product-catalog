@@ -16,7 +16,7 @@ export function run(command, args, options = {}) {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
       stdio: 'inherit',
-      shell: false,
+      shell: true,
       ...options,
     });
     child.on('close', (code) => {
@@ -36,7 +36,7 @@ export function spawnService(name, command, args, options = {}) {
   const prefix = `${color}[${name}]${COLORS.reset}`;
 
   const child = spawn(command, args, {
-    shell: false,
+    shell: true,
     detached: process.platform !== 'win32',
     ...options,
   });
